@@ -122,12 +122,54 @@ public class CircularSinglyLinkedList {
         return prev;
     }
 
+    public void clear(){
+        if(isEmpty()){return;}
+        head = tail = null;
+        size = 0;
+    }
+    public void deletionOfNodeByLocation(int location){
+        if(isEmpty()){
+            System.out.println("The SLL does not exist");
+            return;
+        }else if(location == 0){
+            head = head.next;
+            size--;
+            return;
+        }else if(location >= size){
+            if(head == tail){
+                head = tail = null;
+                size--;
+                return;
+            }
+            Node previous = getPrevious(tail);
+            previous.next = null ;
+            tail = previous;
+            tail.next = head;
+            size--;
+            return;
+        }else{
+            Node n = head;
+            for(int i = 0 ; i<size ;i++){
+                if(i+1 == location-1){
+                    n.next = n.next.next;
+                    size--;
+                    return;
+                }
+                n=n.next;
+            }
+        }
 
+    }
     public void deletionOfNode(int value){
         if(isEmpty()){
             System.out.println("The SLL does not exist");
             return;
         }else if(head.value == value){
+            if(head == tail){
+                head = tail = null;
+                size--;
+                return;
+            }
             head = head.next;
             size--;
             return;
