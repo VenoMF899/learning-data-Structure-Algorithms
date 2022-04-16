@@ -69,6 +69,10 @@ public class CircularSinglyLinkedList {
 
             o(1+1+1+1+1+N) --> o(N+5) --> o(N)
          */
+        if(isEmpty()){
+            createCSLL(nodeValue);
+            return;
+        }
         Node node = new Node(); // o(1)
         node.value = nodeValue; // o(1)
         if (isEmpty()){ // o(1)
@@ -96,6 +100,7 @@ public class CircularSinglyLinkedList {
         }
         size++;
     }
+
     // Searching method in CSLL
     public boolean SearchCSLL(int value){
         Node tempNode = head;
@@ -109,6 +114,7 @@ public class CircularSinglyLinkedList {
         System.out.println("Node not found!"); // o(1)
         return false; // o(1)
     }
+
     public Node getPrevious(Node node){
         Node n = head;
         Node prev = null;
@@ -127,6 +133,7 @@ public class CircularSinglyLinkedList {
         head = tail = null;
         size = 0;
     }
+
     public void deletionOfNodeByLocation(int location){
         if(isEmpty()){
             System.out.println("The SLL does not exist");
@@ -160,6 +167,7 @@ public class CircularSinglyLinkedList {
         }
 
     }
+
     public void deletionOfNode(int value){
         if(isEmpty()){
             System.out.println("The SLL does not exist");
