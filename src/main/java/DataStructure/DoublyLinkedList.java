@@ -88,6 +88,7 @@ public class DoublyLinkedList {
             }
             tempNode = tempNode.next;
         }
+        System.out.println("");
     }
 
     public void reverseTraversDoublyLinkedList(){

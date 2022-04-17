@@ -22,7 +22,16 @@ public class main {
             dll.search(1);
             dll.traversDoublyLinkedList();
 
+            System.out.println("Circular Doubly Linked List");
+            CircularDoublyLinkedList cdll = new CircularDoublyLinkedList();
+            cdll.createCDLL(5);
+            cdll.insertCDLL(0,0);
+            cdll.insertCDLL(4,1);
+            cdll.insertCDLL(7,3);
+            System.out.println("head.prev.value =" + cdll.head().prev.value);
+            System.out.println("tail.next.value ="+ cdll.tail().next.value);
 
+            cdll.traversCDLL();
 
 
 
