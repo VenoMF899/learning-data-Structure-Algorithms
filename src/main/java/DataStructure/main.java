@@ -31,8 +31,7 @@ public class main {
             System.out.println("head.prev.value =" + cdll.head().prev.value);
             System.out.println("tail.next.value ="+ cdll.tail().next.value);
             cdll.traversCDLL();
-            cdll.deleteOfNodeByLocation(3);
-            System.out.println("tail.next.value =" + cdll.tail().next.value);
+            cdll.clear();
             cdll.traversCDLL();
 
 

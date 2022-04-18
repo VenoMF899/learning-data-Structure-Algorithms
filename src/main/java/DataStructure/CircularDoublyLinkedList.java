@@ -91,9 +91,19 @@ public class CircularDoublyLinkedList {
             System.out.println("CDLL does not exist");
             return;
         }else if(location == 0){
+            if(head == tail){
+                head = tail = null;
+                size--;
+                return;
+            }
             head = head.next;
             tail.next = head;
         }else if(location >= size){
+            if(head == tail){
+                head = tail = null;
+                size--;
+                return;
+            }
             DoublyNode previous = tail.prev;
             previous.next = null;
             tail = previous;
@@ -118,10 +128,20 @@ public class CircularDoublyLinkedList {
             System.out.println("CDLL does not exist");
             return;
         }else if(head.value == nodeValue){
+            if(head == tail){
+                head = tail = null;
+                size--;
+                return;
+            }
             head = head.next;
             tail.next = head;
 
         }else if(tail.value == nodeValue){
+            if(head == tail){
+                head = tail = null;
+                size--;
+                return;
+            }
             DoublyNode previous = tail.prev;
             previous.next = null ;
             tail = previous;
@@ -141,6 +161,37 @@ public class CircularDoublyLinkedList {
         size--;
 
     }
+
+    public boolean search(int nodeValue){
+        if(isEmpty()){
+            System.out.println("linked list does not exist");
+            return true;
+        }else if(head.value == nodeValue){
+            System.out.println("value has been found at index: " + 0);
+            return true;
+        }else if(tail.value == nodeValue){
+            System.out.println("Value has been found at index: " +(size-1));
+            return true;
+        }else{
+            DoublyNode tempNode = head;
+            for(int i = 0 ; i<size ; i++){
+                if(tempNode.value == nodeValue){
+                    System.out.println("Value has been found at index: " + i);
+                    return true;
+                }
+                tempNode = tempNode.next;
+            }
+        }
+        System.out.println("Value don't exist in circular doubly linked list");
+        return false;
+    }
+
+    public void clear(){
+        head = tail = null;
+        size = 0 ;
+    }
+
+
 
 
 }
