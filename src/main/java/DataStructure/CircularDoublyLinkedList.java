@@ -66,10 +66,15 @@ public class CircularDoublyLinkedList {
             }
 
         }
+        head.prev = tail;
         size++;
     }
 
     public void traversCDLL(){
+        if(isEmpty()){
+            System.out.println("CDLL does not exist");
+            return;
+        }
         DoublyNode tempNode = head ;
         for(int i = 0 ; i<size ; i++){
             System.out.print(tempNode.value);
@@ -80,6 +85,36 @@ public class CircularDoublyLinkedList {
         }
         System.out.println("\n");
     }
+
+    public void deleteOfNode(int nodeValue){
+        if(isEmpty()){
+            System.out.println("CDLL does not exist");
+            return;
+        }else if(head.value == nodeValue){
+            head = head.next;
+            tail.next = head;
+
+        }else if(tail.value == nodeValue){
+            DoublyNode previous = tail.prev;
+            previous.next = null ;
+            tail = previous;
+            head.prev = tail;
+            tail.next = head;
+        }else{
+            DoublyNode tempNode = head ;
+            for(int i = 0 ; i<size ; i++){
+                if(tempNode.next.value == nodeValue){
+                    tempNode.next = tempNode.next.next;
+                    break;
+                }
+                tempNode =tempNode.next;
+            }
+        }
+        head.prev = tail;
+        size--;
+
+    }
+
 
 }
 

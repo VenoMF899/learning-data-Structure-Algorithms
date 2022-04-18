@@ -30,7 +30,9 @@ public class main {
             cdll.insertCDLL(7,3);
             System.out.println("head.prev.value =" + cdll.head().prev.value);
             System.out.println("tail.next.value ="+ cdll.tail().next.value);
-
+            cdll.traversCDLL();
+            cdll.deleteOfNode(0);
+            System.out.println("tail.next.value =" + cdll.head().prev.value);
             cdll.traversCDLL();
 
 
