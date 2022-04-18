@@ -86,6 +86,33 @@ public class CircularDoublyLinkedList {
         System.out.println("\n");
     }
 
+    public void deleteOfNodeByLocation(int location){
+        if(isEmpty()){
+            System.out.println("CDLL does not exist");
+            return;
+        }else if(location == 0){
+            head = head.next;
+            tail.next = head;
+        }else if(location >= size){
+            DoublyNode previous = tail.prev;
+            previous.next = null;
+            tail = previous;
+            head.prev = tail ;
+            tail.next = head;
+        }else{
+            DoublyNode tempNode = head;
+            for(int i = 0 ; i<size-1 ; i++){
+                if(i+1 == location){
+                    tempNode.next = tempNode.next.next;
+                    break;
+                }
+                tempNode = tempNode.next;
+            }
+        }
+        head.prev = tail;
+        size--;
+    }
+
     public void deleteOfNode(int nodeValue){
         if(isEmpty()){
             System.out.println("CDLL does not exist");
