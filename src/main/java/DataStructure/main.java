@@ -27,7 +27,8 @@ public class main {
             cdll.createCDLL(5);
             cdll.insertCDLL(0,0);
             cdll.insertCDLL(4,1);
-            cdll.insertCDLL(7,3);
+            cdll.insertCDLL(14,3);
+            cdll.deleteOfNode(4);
             System.out.println("head.prev.value =" + cdll.head().prev.value);
             System.out.println("tail.next.value ="+ cdll.tail().next.value);
             cdll.traversCDLL();

@@ -18,14 +18,14 @@ public class CircularDoublyLinkedList {
     }
 
     public void createCDLL(int nodeValue){
-        head = new DoublyNode();
-        DoublyNode node = new DoublyNode();
-        node.value = nodeValue;
-        node.next = node ;
-        node.prev = node ;
-        head = node ;
-        tail = node ;
-        size = 1;
+       head = new DoublyNode();
+       DoublyNode node = new DoublyNode();
+       node.value = nodeValue;
+       node.next = node;
+       node.prev = node;
+       head = node ;
+       tail = node ;
+       size = 1;
     }
 
     private boolean isEmpty(){
@@ -41,32 +41,31 @@ public class CircularDoublyLinkedList {
             size++;
             return;
         }else if(location == 0){
-            head.prev = newNode;
             newNode.next = head;
-            head = newNode ;
-            head.prev = tail ;
-            tail.next = head ;
+            newNode.prev = tail;
+            head.prev = newNode;
+            tail.next = newNode;
+            head = newNode;
         }else if(location >= size){
-            tail.next = newNode ;
-            newNode.prev = tail ;
-            tail = newNode ;
-            tail.next = head ;
+           newNode.next = head;
+           newNode.prev = tail;
+           head.prev = newNode;
+           tail.next = newNode;
+           tail = newNode;
         }else{
             DoublyNode tempNode = head ;
-            for(int i = 0 ; i<size ; i++){
-                if(i == location){
-                    DoublyNode tempPrevious = tempNode.prev;
-                    tempNode.prev = newNode ;
-                    newNode.next = tempNode;
-                    newNode.prev = tempPrevious;
-                    tempPrevious.next = newNode;
-                    break;
-                }
-                tempNode = tempNode.next;
+            int index = 0;
+            while (index < location-1){
+                tempNode =tempNode.next;
+                index++;
             }
+            newNode.prev = tempNode;
+            newNode.next = tempNode.next;
+            tempNode.next = newNode;
+            newNode.next.prev = newNode;
 
         }
-        head.prev = tail;
+
         size++;
     }
 
