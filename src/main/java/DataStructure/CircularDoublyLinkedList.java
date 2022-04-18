@@ -85,6 +85,21 @@ public class CircularDoublyLinkedList {
         System.out.println("\n");
     }
 
+    public void reversalTraversCDLL(){
+        if(isEmpty()){
+            System.out.println("CDLL does not exist");
+            return;
+        }
+        DoublyNode tempNode = tail;
+        for(int i = 0 ;i<size ; i++){
+            System.out.print(tempNode.value);
+            if(i != size-1){
+                System.out.print(" -> ");
+            }
+            tempNode = tempNode.prev;
+        }
+    }
+
     public void deleteOfNodeByLocation(int location){
         if(isEmpty()){
             System.out.println("CDLL does not exist");
@@ -113,12 +128,12 @@ public class CircularDoublyLinkedList {
             for(int i = 0 ; i<size-1 ; i++){
                 if(i+1 == location){
                     tempNode.next = tempNode.next.next;
+                    tempNode.next.prev = tempNode;
                     break;
                 }
                 tempNode = tempNode.next;
             }
         }
-        head.prev = tail;
         size--;
     }
 
@@ -137,6 +152,8 @@ public class CircularDoublyLinkedList {
 
         }else if(tail.value == nodeValue){
             if(head == tail){
+                head.prev = null;
+                head.next = null;
                 head = tail = null;
                 size--;
                 return;
@@ -151,12 +168,12 @@ public class CircularDoublyLinkedList {
             for(int i = 0 ; i<size ; i++){
                 if(tempNode.next.value == nodeValue){
                     tempNode.next = tempNode.next.next;
+                    tempNode.next.prev = tempNode;
                     break;
                 }
                 tempNode =tempNode.next;
             }
         }
-        head.prev = tail;
         size--;
 
     }
@@ -186,6 +203,8 @@ public class CircularDoublyLinkedList {
     }
 
     public void clear(){
+        head.prev = null;
+        head.next = null;
         head = tail = null;
         size = 0 ;
     }
